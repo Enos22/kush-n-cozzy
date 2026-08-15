@@ -12,7 +12,9 @@ function Home() {
     setError("");
     const endpoint = role === "admin" ? "admins" : "clients";
 
-    fetch(`http://localhost:3001/${endpoint}?username=${username}&password=${password}`)
+    fetch(
+      `http://localhost:3001/${endpoint}?username=${username}&password=${password}`,
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
@@ -35,10 +37,14 @@ function Home() {
       <div className="home-container">
         <div className="tag-card tilt">
           <h2>Welcome, {loggedInUser.username}</h2>
-          <p className="brand-subtitle" style={{ textAlign: "left", marginBottom: 0 }}>
+          <p
+            className="brand-subtitle"
+            style={{ textAlign: "left", marginBottom: 0 }}>
             logged in as {loggedInUser.role}
           </p>
-          <button onClick={handleLogout}>Log Out</button>
+          <button className="logout-btn" onClick={handleLogout}>
+            Log Out
+          </button>{" "}
         </div>
       </div>
     );
@@ -46,7 +52,9 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1 className="brand-mark">Kush-n-<span>Cozzy</span></h1>
+      <h1 className="brand-mark">
+        Kush-n-<span>Cozzy</span>
+      </h1>
       <p className="brand-subtitle">your cozy corner store</p>
 
       <div className="tag-card tilt">
@@ -54,15 +62,13 @@ function Home() {
           <button
             type="button"
             className={role === "client" ? "active" : ""}
-            onClick={() => setRole("client")}
-          >
+            onClick={() => setRole("client")}>
             Client
           </button>
           <button
             type="button"
             className={role === "admin" ? "active" : ""}
-            onClick={() => setRole("admin")}
-          >
+            onClick={() => setRole("admin")}>
             Admin
           </button>
         </div>

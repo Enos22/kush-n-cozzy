@@ -1,132 +1,134 @@
 {
-    "products": [
-        {
-            "id": "1",
-            "name": "32 Inch Smart TV",
-            "category": "electronics",
-            "description": "A 32-inch HD Smart LED TV with HDMI and USB connectivity.",
-            "price": 25000,
-            "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6"
-        },
-        {
-            "id": "2",
-            "name": "Wireless Bluetooth Speaker",
-            "category": "electronics",
-            "description": "Portable Bluetooth speaker with clear sound and rechargeable battery.",
-            "price": 4500,
-            "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1"
-        },
-        {
-            "id": "3",
-            "name": "Smartphone",
-            "category": "electronics",
-            "description": "Modern smartphone with a large display, quality camera, and long-lasting battery.",
-            "price": 35000,
-            "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
-        },
-        {
-            "id": "4",
-            "name": "Laptop Computer",
-            "category": "electronics",
-            "description": "Reliable laptop suitable for work, school, browsing, and entertainment.",
-            "price": 65000,
-            "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
-        },
-        {
-            "id": "5",
-            "name": "Men's Casual Shirt",
-            "category": "clothes",
-            "description": "Comfortable cotton casual shirt suitable for everyday wear.",
-            "price": 1800,
-            "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf"
-        },
-        {
-            "id": "6",
-            "name": "Women's Dress",
-            "category": "clothes",
-            "description": "Elegant and comfortable dress suitable for casual and special occasions.",
-            "price": 3500,
-            "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8"
-        },
-        {
-            "id": "7",
-            "name": "Running Shoes",
-            "category": "clothes",
-            "description": "Lightweight and comfortable shoes suitable for everyday activities and exercise.",
-            "price": 4200,
-            "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
-        },
-        {
-            "id": "8",
-            "name": "Face Moisturizer",
-            "category": "beauty products",
-            "description": "Hydrating face moisturizer suitable for daily skincare routines.",
-            "price": 1800,
-            "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883"
-        },
-        {
-            "id": "9",
-            "name": "Perfume",
-            "category": "beauty products",
-            "description": "Long-lasting fragrance with a fresh and elegant scent.",
-            "price": 3500,
-            "image": "https://images.unsplash.com/photo-1541643600914-78b084683601"
-        },
-        {
-            "id": "10",
-            "name": "Makeup Set",
-            "category": "beauty products",
-            "description": "Complete makeup set containing essential products for everyday beauty.",
-            "price": 4500,
-            "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796"
-        },
-        {
-            "id": "11",
-            "name": "Gift Basket",
-            "category": "gift products",
-            "description": "Beautifully arranged gift basket suitable for birthdays and special occasions.",
-            "price": 5000,
-            "image": "https://images.unsplash.com/photo-1512909006721-3d6018887383"
-        },
-        {
-            "id": "12",
-            "name": "Teddy Bear",
-            "category": "gift products",
-            "description": "Soft and cuddly teddy bear that makes a perfect gift for loved ones.",
-            "price": 2500,
-            "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11"
-        },
-        {
-            "id": "13",
-            "name": "Personalized Mug",
-            "category": "gift products",
-            "description": "Customizable ceramic mug suitable for birthdays, anniversaries, and celebrations.",
-            "price": 1200,
-            "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d"
-        },
-        {
-            "id": "14",
-            "name": "Office Chair",
-            "category": "furniture",
-            "description": "Comfortable adjustable office chair with back support and padded seating.",
-            "price": 8500,
-            "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8"
-        },
-        {
-            "id": "15",
-            "name": "Study Desk",
-            "category": "furniture",
-            "description": "Simple and durable study desk suitable for home, school, or office use.",
-            "price": 7500,
-            "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd"
-        },
-        {
-            "id": "16",
-            "name": "Sofa Set",
-            "category": "furniture",
-            "description": "Modern and comfortable sofa set suitable for living rooms and offices.",
-            "price": 45000,
-            "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc"
-        }
-    ]
+  "products": [
+    {
+      "id": "1",
+      "name": "32 Inch Smart TV",
+      "category": "electronics",
+      "description": "A 32-inch HD Smart LED TV with HDMI and USB connectivity.",
+      "price": 25000,
+      "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6"
+    },
+    {
+      "id": "2",
+      "name": "Wireless Bluetooth Speaker",
+      "category": "electronics",
+      "description": "Portable Bluetooth speaker with clear sound and rechargeable battery.",
+      "price": 4500,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1"
+    },
+    {
+      "id": "3",
+      "name": "Smartphone",
+      "category": "electronics",
+      "description": "Modern smartphone with a large display, quality camera, and long-lasting battery.",
+      "price": 35000,
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    },
+    {
+      "id": "4",
+      "name": "Laptop Computer",
+      "category": "electronics",
+      "description": "Reliable laptop suitable for work, school, browsing, and entertainment.",
+      "price": 65000,
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
+    },
+    {
+      "id": "5",
+      "name": "Men's Casual Shirt",
+      "category": "clothes",
+      "description": "Comfortable cotton casual shirt suitable for everyday wear.",
+      "price": 1800,
+      "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf"
+    },
+    {
+      "id": "6",
+      "name": "Women's Dress",
+      "category": "clothes",
+      "description": "Elegant and comfortable dress suitable for casual and special occasions.",
+      "price": 3500,
+      "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8"
+    },
+    {
+      "id": "7",
+      "name": "Running Shoes",
+      "category": "clothes",
+      "description": "Lightweight and comfortable shoes suitable for everyday activities and exercise.",
+      "price": 4200,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+    },
+    {
+      "id": "8",
+      "name": "Face Moisturizer",
+      "category": "beauty products",
+      "description": "Hydrating face moisturizer suitable for daily skincare routines.",
+      "price": 1800,
+      "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883"
+    },
+    {
+      "id": "9",
+      "name": "Perfume",
+      "category": "beauty products",
+      "description": "Long-lasting fragrance with a fresh and elegant scent.",
+      "price": 3500,
+      "image": "https://images.unsplash.com/photo-1541643600914-78b084683601"
+    },
+    {
+      "id": "10",
+      "name": "Makeup Set",
+      "category": "beauty products",
+      "description": "Complete makeup set containing essential products for everyday beauty.",
+      "price": 4500,
+      "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796"
+    },
+    {
+      "id": "11",
+      "name": "Gift Basket",
+      "category": "gift products",
+      "description": "Beautifully arranged gift basket suitable for birthdays and special occasions.",
+      "price": 5000,
+      "image": "https://images.unsplash.com/photo-1512909006721-3d6018887383"
+    },
+    {
+      "id": "12",
+      "name": "Teddy Bear",
+      "category": "gift products",
+      "description": "Soft and cuddly teddy bear that makes a perfect gift for loved ones.",
+      "price": 2500,
+      "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11"
+    },
+    {
+      "id": "13",
+      "name": "Personalized Mug",
+      "category": "gift products",
+      "description": "Customizable ceramic mug suitable for birthdays, anniversaries, and celebrations.",
+      "price": 1200,
+      "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d"
+    },
+    {
+      "id": "14",
+      "name": "Office Chair",
+      "category": "furniture",
+      "description": "Comfortable adjustable office chair with back support and padded seating.",
+      "price": 8500,
+      "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8"
+    },
+    {
+      "id": "15",
+      "name": "Study Desk",
+      "category": "furniture",
+      "description": "Simple and durable study desk suitable for home, school, or office use.",
+      "price": 7500,
+      "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd"
+    },
+    {
+      "id": "16",
+      "name": "Sofa Set",
+      "category": "furniture",
+      "description": "Modern and comfortable sofa set suitable for living rooms and offices.",
+      "price": 45000,
+      "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc"
+    }
+  ],
+  "clients": [{ "id": 1, "username": "client1", "password": "client123" }],
+  "admins": [{ "id": 1, "username": "admin1", "password": "admin123" }]
 }

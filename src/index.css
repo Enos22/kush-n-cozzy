@@ -324,3 +324,27 @@ form > button[type="submit"]:active,
     animation: none !important;
   }
 }
+.logout-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 0;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+.logout-btn:hover {
+  background: var(--ink);
+}
+.logout-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--ink);
+}
