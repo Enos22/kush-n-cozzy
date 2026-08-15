@@ -1,16 +1,15 @@
-cat > src/index.css
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap");
 
 :root {
-  --ink: #1B242C;
+  --ink: #1b242c;
   --navy: #283845;
   --navy-muted: #445565;
-  --cream: #FFF6EC;
-  --cream-dim: #F2E9DB;
-  --orange: #FFA649;
-  --orange-deep: #FF8A1E;
-  --white: #FFFFFF;
-  --error: #E85D4E;
+  --cream: #fff6ec;
+  --cream-dim: #f2e9db;
+  --orange: #ffa649;
+  --orange-deep: #ff8a1e;
+  --white: #ffffff;
+  --error: #e85d4e;
 
   --radius-lg: 20px;
   --radius-md: 14px;
@@ -19,7 +18,9 @@ cat > src/index.css
   --shadow-soft: 0 4px 20px rgba(40, 56, 69, 0.12);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -28,12 +29,15 @@ body {
     radial-gradient(circle at 10% 10%, var(--cream-dim) 0%, transparent 40%),
     radial-gradient(circle at 90% 30%, var(--cream-dim) 0%, transparent 35%);
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, .brand-mark {
-  font-family: 'Baloo 2', sans-serif;
+h1,
+h2,
+h3,
+.brand-mark {
+  font-family: "Baloo 2", sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--navy);
@@ -69,29 +73,42 @@ h1, h2, h3, .brand-mark {
 }
 
 @keyframes peelIn {
-  from { opacity: 0; transform: translateY(24px) rotate(-4deg) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0) rotate(-1.2deg) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-4deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.2deg) scale(1);
+  }
 }
-.tag-card.tilt { animation: peelIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.tag-card.tilt {
+  animation: peelIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
 
-.home-container, .new-product-container {
+.home-container,
+.new-product-container {
   max-width: 460px;
   margin: 64px auto;
   padding: 0 20px;
 }
-.new-product-container { max-width: 640px; }
+.new-product-container {
+  max-width: 640px;
+}
 
 .brand-mark {
   font-size: 2rem;
   text-align: center;
   margin: 0 0 8px;
 }
-.brand-mark span { color: var(--orange); }
+.brand-mark span {
+  color: var(--orange);
+}
 
 .brand-subtitle {
   text-align: center;
   color: var(--navy-muted);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -112,7 +129,7 @@ h1, h2, h3, .brand-mark {
   border: none;
   background: transparent;
   padding: 10px 0;
-  font-family: 'Baloo 2', sans-serif;
+  font-family: "Baloo 2", sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--navy-muted);
@@ -122,7 +139,9 @@ h1, h2, h3, .brand-mark {
   z-index: 1;
   transition: color 0.25s ease;
 }
-.role-toggle button.active { color: var(--white); }
+.role-toggle button.active {
+  color: var(--white);
+}
 .role-toggle::after {
   content: "";
   position: absolute;
@@ -134,11 +153,13 @@ h1, h2, h3, .brand-mark {
   transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
   transform: translateX(var(--toggle-x, 0));
 }
-.role-toggle[data-role="admin"]::after { --toggle-x: 100%; }
+.role-toggle[data-role="admin"]::after {
+  --toggle-x: 100%;
+}
 
 form label {
   display: block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -146,33 +167,40 @@ form label {
   margin-bottom: 6px;
   margin-top: 18px;
 }
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
   padding: 12px 14px;
   border: 2px solid var(--navy-muted);
   border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   background: var(--cream);
   color: var(--ink);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
   outline: none;
   border-color: var(--orange);
   background: var(--white);
 }
-form textarea { min-height: 90px; resize: vertical; }
+form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
 
 .error-text {
   color: var(--error);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.85rem;
   margin-top: 12px;
 }
 
 button {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: "Baloo 2", sans-serif;
 }
 form > button[type="submit"],
 .home-container > button {
@@ -187,10 +215,15 @@ form > button[type="submit"],
   border-radius: var(--radius-md);
   box-shadow: 0 4px 0 var(--ink);
   cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
 }
 form > button[type="submit"]:hover,
-.home-container > button:hover { background: var(--orange-deep); }
+.home-container > button:hover {
+  background: var(--orange-deep);
+}
 form > button[type="submit"]:active,
 .home-container > button:active {
   transform: translateY(4px);
@@ -204,14 +237,16 @@ form > button[type="submit"]:active,
   padding: 20px 0;
 }
 .main-nav a {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: "Baloo 2", sans-serif;
   font-weight: 700;
   color: var(--navy);
   text-decoration: none;
   padding: 8px 18px;
   border: 2px solid var(--ink);
   border-radius: 999px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 .main-nav a:hover {
   background: var(--orange);
@@ -234,8 +269,12 @@ form > button[type="submit"]:active,
   padding: 14px;
   animation: peelIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
-.product-item:nth-child(odd) { transform: rotate(-0.6deg); }
-.product-item:nth-child(even) { transform: rotate(0.6deg); }
+.product-item:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.product-item:nth-child(even) {
+  transform: rotate(0.6deg);
+}
 
 .product-item img {
   width: 64px;
@@ -246,7 +285,7 @@ form > button[type="submit"]:active,
   flex-shrink: 0;
 }
 .product-item strong {
-  font-family: 'Baloo 2', sans-serif;
+  font-family: "Baloo 2", sans-serif;
   color: var(--navy);
 }
 .product-item p {
@@ -255,7 +294,7 @@ form > button[type="submit"]:active,
   color: var(--navy-muted);
 }
 .price-tag {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 600;
   color: var(--orange-deep);
 }
@@ -270,10 +309,18 @@ form > button[type="submit"]:active,
   font-weight: 700;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
-.delete-btn:hover { background: var(--error); color: var(--white); }
+.delete-btn:hover {
+  background: var(--error);
+  color: var(--white);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .tag-card, .product-item { animation: none !important; }
+  .tag-card,
+  .product-item {
+    animation: none !important;
+  }
 }
