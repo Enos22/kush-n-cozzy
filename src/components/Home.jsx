@@ -33,7 +33,7 @@ export default function House() {
         >
           <NavLink to="/" style={{ textDecoration: 'none', color: 'var(--ink)' }}>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem' }}>
-              Duka<span style={{ color: 'var(--amber)' }}>.</span>
+              Kush-n-Cozzy<span style={{ color: 'var(--amber)' }}>.</span>
             </span>
           </NavLink>
 
@@ -65,7 +65,7 @@ export default function House() {
 
       <footer style={{ borderTop: '1px solid var(--line)', padding: '20px 0', textAlign: 'center' }}>
         <p style={{ fontSize: '0.82rem', color: 'var(--ink-soft)', margin: 0 }}>
-          © {new Date().getFullYear()} Duka Admin Portal
+          © {new Date().getFullYear()} Kush-n-Cozzy Admin Portal
         </p>
       </footer>
     </div>
