@@ -4,10 +4,7 @@ export default function About() {
   return (
     <div>
         <div>
-          <img 
-            src="https://unsplash.com" 
-            alt="Our Team Workspace" 
-          />
+          <img src="https://unsplash.com" alt="Our Team Workspace" />
         </div>
 
         <div>
@@ -36,9 +33,7 @@ export default function About() {
               <p>Secure Checkout</p>
             </div>
           </div>
-
         </div>
-
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductSearchApp() {
   const [products, setProducts] = useState([]);
@@ -7,15 +8,15 @@ export default function ProductSearchApp() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('./db json')
+    fetch('/db.json')
       .then((response) => {
         if (!response.ok) {
-          throw new Error('check your network');
+          throw new Error('Check your network connection');
         }
         return response.json();
       })
       .then((data) => {
-        setProducts(data);
+        setProducts(data.products || []);
         setLoading(false);
       })
       .catch((err) => {
@@ -56,12 +57,15 @@ export default function ProductSearchApp() {
                 <span>{product.category}</span>
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
-                <div>KES {product.price?.toLocaleString()}</div>
+              </div>
+              <div>
+                <span>KES {product.price?.toLocaleString()}</span>
+                <Link to={`/product/${product.id}`}>View</Link>
               </div>
             </div>
           ))
         ) : (
-          <p>No products matches your search.</p>
+          <p>No products match your search.</p>
         )}
       </div>
     </div>
