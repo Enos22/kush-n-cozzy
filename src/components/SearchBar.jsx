@@ -7,7 +7,7 @@ export default function ProductSearchApp() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch('./db json')
       .then((response) => {
         if (!response.ok) {
           throw new Error('check your network');
