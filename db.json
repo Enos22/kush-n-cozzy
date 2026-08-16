@@ -129,6 +129,19 @@
       "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc"
     }
   ],
-  "clients": [{ "id": 1, "username": "client1", "password": "client123" }],
-  "admins": [{ "id": 1, "username": "admin1", "password": "admin123" }]
+  "clients": [
+    {
+      "id": "1",
+      "username": "client1",
+      "password": "client123"
+    }
+  ],
+  "admins": [
+    {
+      "id": "1",
+      "username": "admin1",
+      "password": "admin123"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

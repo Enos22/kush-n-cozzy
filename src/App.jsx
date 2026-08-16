@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import NewProduct from "./pages/NewProduct";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/new-product" element={<NewProduct />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
