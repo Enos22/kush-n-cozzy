@@ -106,12 +106,6 @@ export default function House() {
             <NavLink to="/orders" style={sidebarLinkStyle}>
               Orders
             </NavLink>
-            <NavLink to="/categories" style={sidebarLinkStyle}>
-              Categories
-            </NavLink>
-            <NavLink to="/settings" style={sidebarLinkStyle}>
-              Settings
-            </NavLink>
           </nav>
         </aside>
 
@@ -134,7 +128,7 @@ export default function House() {
             color: "var(--cream)",
             margin: 0,
           }}>
-          © {new Date().getFullYear()} Kush-n-Cozzy Admin Portal
+          © {new Date().getFullYear()} Kush-n-Cozzy All Rights Claimed And Reserved By Team 9.
         </p>
       </footer>
     </div>

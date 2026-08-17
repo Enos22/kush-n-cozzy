@@ -1,22 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "32 Inch Smart TV",
-      "category": "electronics",
-      "description": "A 32-inch HD Smart LED TV with HDMI and USB connectivity.",
-      "price": 25000,
-      "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6"
-    },
-    {
-      "id": "2",
-      "name": "Wireless Bluetooth Speaker",
-      "category": "electronics",
-      "description": "Portable Bluetooth speaker with clear sound and rechargeable battery.",
-      "price": 4500,
-      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1"
-    },
-    {
       "id": "3",
       "name": "Smartphone",
       "category": "electronics",

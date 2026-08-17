@@ -416,3 +416,297 @@ form > button[type="submit"]:active,
   margin-top: 30px;
   margin-bottom: 30px;
 }
+/* Cart / Checkout / Order Confirmation
+   Reuses variables and component patterns from the main stylesheet
+   (--ink, --navy, --orange, --radius-*, .tag-card, .product-item, .price-tag, .delete-btn)
+   Import this AFTER the main stylesheet so variables are already defined. */
+
+.cart-page,
+.checkout-page,
+.order-confirmation-page {
+  max-width: 640px;
+  margin: 64px auto;
+  padding: 0 20px;
+}
+
+.cart-page h2,
+.checkout-page h2,
+.order-confirmation-page h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ===== Empty cart ===== */
+.cart-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+.cart-empty .btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* ===== Cart list — styled like .product-item cards ===== */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  gap: 18px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+.cart-item:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.cart-item:nth-child(even) {
+  transform: rotate(0.6deg);
+}
+
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.cart-item-info h4 {
+  font-family: "Baloo 2", sans-serif;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+.cart-item-info p {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: var(--orange-deep);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.cart-item-qty button {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cart-item-qty button:hover:not(:disabled) {
+  background: var(--orange);
+}
+.cart-item-qty button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.cart-item-qty span {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.cart-item-subtotal {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cart-remove-btn {
+  flex-shrink: 0;
+  background: var(--white);
+  border: 2px solid var(--error);
+  color: var(--error);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.cart-remove-btn:hover {
+  background: var(--error);
+  color: var(--white);
+}
+
+/* ===== Cart / Checkout summary — styled like .tag-card ===== */
+.cart-summary,
+.checkout-summary {
+  position: relative;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-tag);
+  padding: 24px;
+  margin-top: 32px;
+}
+
+.cart-summary {
+  text-align: right;
+}
+.cart-summary h3 {
+  margin: 0 0 4px;
+}
+
+.checkout-summary h3 {
+  margin-top: 0;
+}
+.checkout-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+.checkout-summary li {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+  padding: 4px 0;
+}
+.checkout-total {
+  border-top: 2px dashed var(--navy-muted);
+  padding-top: 12px;
+  margin-top: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--orange-deep);
+}
+
+/* ===== Checkout form ===== */
+/* Labels, inputs, and textarea inherit the site's global `form label`,
+   `form input`, `form textarea` rules automatically. Only <select>
+   needs an explicit rule since the base stylesheet doesn't style it. */
+.checkout-form {
+  margin-top: 24px;
+}
+
+.checkout-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--navy-muted);
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background: var(--cream);
+  color: var(--ink);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.checkout-form select:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: var(--white);
+}
+
+.checkout-error {
+  color: var(--error);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+/* ===== Shared button (Continue Shopping, Proceed to Checkout) =====
+   Matches form > button[type="submit"] raised-sticker style */
+.btn,
+.checkout-form button[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 0;
+  background: var(--orange);
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  text-decoration: none;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+.btn:hover,
+.checkout-form button[type="submit"]:hover {
+  background: var(--orange-deep);
+}
+.btn:active,
+.checkout-form button[type="submit"]:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+.checkout-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+/* ===== Order confirmation ===== */
+.order-confirmation-page {
+  text-align: center;
+}
+.order-confirmation-page h2 {
+  color: var(--orange-deep);
+}
+.order-confirmation-page p {
+  color: var(--navy-muted);
+}
+.order-confirmation-page .btn {
+  max-width: 220px;
+  margin: 24px auto 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .cart-item {
+    flex-wrap: wrap;
+  }
+  .cart-item-info {
+    flex-basis: 100%;
+    order: 2;
+  }
+  .cart-item-img {
+    order: 1;
+  }
+  .cart-item-qty {
+    order: 3;
+  }
+  .cart-item-subtotal {
+    order: 4;
+    margin-left: auto;
+  }
+  .cart-remove-btn {
+    order: 5;
+  }
+}
