@@ -1,111 +1,712 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --ink: #1b242c;
+  --navy: #283845;
+  --navy-muted: #445565;
+  --cream: #fff6ec;
+  --cream-dim: #f2e9db;
+  --orange: #ffa649;
+  --orange-deep: #ff8a1e;
+  --white: #ffffff;
+  --error: #e85d4e;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --shadow-tag: 0 6px 0 var(--ink), 0 8px 16px rgba(27, 36, 44, 0.25);
+  --shadow-soft: 0 4px 20px rgba(40, 56, 69, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 10% 10%, var(--cream-dim) 0%, transparent 40%),
+    radial-gradient(circle at 90% 30%, var(--cream-dim) 0%, transparent 35%);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3,
+.brand-mark {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.tag-card {
+  position: relative;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-tag);
+  padding: 32px;
+}
+
+.tag-card::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+}
+
+.tag-card.tilt {
+  transform: rotate(-1.2deg);
+  transition: transform 0.25s ease;
+}
+.tag-card.tilt:hover {
+  transform: rotate(0deg) translateY(-2px);
+}
+
+@keyframes peelIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-4deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.2deg) scale(1);
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
+.tag-card.tilt {
+  animation: peelIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.home-container,
+.new-product-container {
+  max-width: 460px;
+  margin: 64px auto;
+  padding: 0 20px;
+}
+.new-product-container {
+  max-width: 640px;
+}
+
+.brand-mark {
+  font-size: 2rem;
+  text-align: center;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+}
+.brand-mark span {
+  color: var(--orange);
+}
+
+.brand-subtitle {
+  text-align: center;
+  color: var(--navy-muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 36px;
+}
+
+.role-toggle {
+  display: flex;
+  position: relative;
+  background: var(--cream-dim);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+.role-toggle button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy-muted);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.25s ease;
+}
+.role-toggle button.active {
+  color: var(--white);
+}
+.role-toggle::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: calc(50% - 4px);
+  background: var(--navy);
+  border-radius: 999px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  transform: translateX(var(--toggle-x, 0));
+}
+.role-toggle[data-role="admin"]::after {
+  --toggle-x: 100%;
+}
+
+form label {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--navy-muted);
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--navy-muted);
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background: var(--cream);
+  color: var(--ink);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: var(--white);
+}
+form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.error-text {
+  color: var(--error);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+button {
+  font-family: "Baloo 2", sans-serif;
+}
+form > button[type="submit"],
+.home-container > button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 0;
+  background: var(--orange);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+form > button[type="submit"]:hover,
+.home-container > button:hover {
+  background: var(--orange-deep);
+}
+form > button[type="submit"]:active,
+.home-container > button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 0;
+}
+.main-nav a {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.main-nav a:hover {
+  background: var(--orange);
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  gap: 18px;
+}
+.product-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  animation: peelIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.product-item:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.product-item:nth-child(even) {
+  transform: rotate(0.6deg);
+}
+
+.product-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+.product-item strong {
+  font-family: "Baloo 2", sans-serif;
+  color: var(--navy);
+}
+.product-item p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+}
+.price-tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: var(--orange-deep);
+}
+
+.delete-btn {
+  margin-left: auto;
+  background: var(--white);
+  border: 2px solid var(--error);
+  color: var(--error);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.delete-btn:hover {
+  background: var(--error);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-card,
+  .product-item {
+    animation: none !important;
   }
 }
-p {
+.logout-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 0;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+.logout-btn:hover {
+  background: var(--ink);
+}
+.logout-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+.site-footer {
+  margin-top: 80px;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 48px 20px 24px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-mark {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--cream);
+  margin: 0 0 4px;
+}
+.footer-mark span {
+  color: var(--orange);
+}
+
+.footer-tagline {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cream-dim);
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.footer-col h4 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 0.95rem;
+  color: var(--orange);
+  margin: 0 0 12px;
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-col li {
+  margin-bottom: 8px;
+}
+.footer-col li a {
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-col li a:hover {
+  color: var(--orange);
+}
+.footer-bottom p {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--cream-dim);
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* Cart / Checkout / Order Confirmation
+   Reuses variables and component patterns from the main stylesheet
+   (--ink, --navy, --orange, --radius-*, .tag-card, .product-item, .price-tag, .delete-btn)
+   Import this AFTER the main stylesheet so variables are already defined. */
+
+.cart-page,
+.checkout-page,
+.order-confirmation-page {
+  max-width: 640px;
+  margin: 64px auto;
+  padding: 0 20px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.cart-page h2,
+.checkout-page h2,
+.order-confirmation-page h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ===== Empty cart ===== */
+.cart-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+.cart-empty .btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* ===== Cart list — styled like .product-item cards ===== */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  gap: 18px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+.cart-item:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.cart-item:nth-child(even) {
+  transform: rotate(0.6deg);
+}
+
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.cart-item-info h4 {
+  font-family: "Baloo 2", sans-serif;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+.cart-item-info p {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: var(--orange-deep);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.cart-item-qty button {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cart-item-qty button:hover:not(:disabled) {
+  background: var(--orange);
+}
+.cart-item-qty button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.cart-item-qty span {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.cart-item-subtotal {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cart-remove-btn {
+  flex-shrink: 0;
+  background: var(--white);
+  border: 2px solid var(--error);
+  color: var(--error);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.cart-remove-btn:hover {
+  background: var(--error);
+  color: var(--white);
+}
+
+/* ===== Cart / Checkout summary — styled like .tag-card ===== */
+.cart-summary,
+.checkout-summary {
+  position: relative;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-tag);
+  padding: 24px;
+  margin-top: 32px;
+}
+
+.cart-summary {
+  text-align: right;
+}
+.cart-summary h3 {
+  margin: 0 0 4px;
+}
+
+.checkout-summary h3 {
+  margin-top: 0;
+}
+.checkout-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+.checkout-summary li {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+  padding: 4px 0;
+}
+.checkout-total {
+  border-top: 2px dashed var(--navy-muted);
+  padding-top: 12px;
+  margin-top: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--orange-deep);
+}
+
+/* ===== Checkout form ===== */
+/* Labels, inputs, and textarea inherit the site's global `form label`,
+   `form input`, `form textarea` rules automatically. Only <select>
+   needs an explicit rule since the base stylesheet doesn't style it. */
+.checkout-form {
+  margin-top: 24px;
+}
+
+.checkout-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--navy-muted);
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background: var(--cream);
+  color: var(--ink);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.checkout-form select:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: var(--white);
+}
+
+.checkout-error {
+  color: var(--error);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+/* ===== Shared button (Continue Shopping, Proceed to Checkout) =====
+   Matches form > button[type="submit"] raised-sticker style */
+.btn,
+.checkout-form button[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 0;
+  background: var(--orange);
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  text-decoration: none;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+.btn:hover,
+.checkout-form button[type="submit"]:hover {
+  background: var(--orange-deep);
+}
+.btn:active,
+.checkout-form button[type="submit"]:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+.checkout-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+/* ===== Order confirmation ===== */
+.order-confirmation-page {
+  text-align: center;
+}
+.order-confirmation-page h2 {
+  color: var(--orange-deep);
+}
+.order-confirmation-page p {
+  color: var(--navy-muted);
+}
+.order-confirmation-page .btn {
+  max-width: 220px;
+  margin: 24px auto 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .cart-item {
+    flex-wrap: wrap;
+  }
+  .cart-item-info {
+    flex-basis: 100%;
+    order: 2;
+  }
+  .cart-item-img {
+    order: 1;
+  }
+  .cart-item-qty {
+    order: 3;
+  }
+  .cart-item-subtotal {
+    order: 4;
+    margin-left: auto;
+  }
+  .cart-remove-btn {
+    order: 5;
+  }
 }
