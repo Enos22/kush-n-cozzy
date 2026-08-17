@@ -13,7 +13,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         setLoading(true);
-        getProduct(id)
+        getProducts(id)
             .then((data) => {
                 setProduct(data);
                 setQuantity(1);
