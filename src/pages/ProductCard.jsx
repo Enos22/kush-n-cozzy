@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function ProductCard({ product }) {
     return (
         <article className="product-card">
-            <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} loading="lazy" decoding="async" />
             <div style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
                 <div>
                     <span className="tag" style={{ display: 'inline-block', marginBottom: 8 }}>{product.category}</span>
@@ -13,7 +13,11 @@ export default function ProductCard({ product }) {
 
                 <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <strong style={{ fontSize: '1.05rem' }}>KES {Number(product.price).toLocaleString()}</strong>
-                    <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'var(--navy)', fontWeight: 700 }}>
+                    <Link
+                        to={`/product/${product.id}`}
+                        style={{ textDecoration: 'none', color: 'var(--navy)', fontWeight: 700 }}
+                        aria-label={`View details for ${product.name}`}
+                    >
                         View details
                     </Link>
                 </div>
