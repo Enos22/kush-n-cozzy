@@ -13,16 +13,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<House />}>
-          <Route index element={<ProductList />} />
-          <Route path="/" element={<ProductList />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/add-product" element={<NewProduct />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<House />}>
+          <Route index element={<Login />} />
+          <Route path="add-product" element={<NewProduct />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="order-confirmation" element={<OrderConfirmation />} />
         </Route>
       </Routes>
     </BrowserRouter>
