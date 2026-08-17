@@ -1,10 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import House from "./components/House";
-import Login from "./components/login";
-import NewProduct from "./pages/NewProduct";
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
-import OrderConfirmation from "./components/OrderConfirmation";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import House from './components/House';
+import About from './components/About';
+import Contact from './components/Contact';
+import Login from './components/login';
+import ProductList from './pages/ProductList';
+import ProductDetails from './pages/ProductDetails';
+import NewProduct from './pages/NewProduct';
+import NotFound from './pages/NotFound';
+import './App.css';
 
 function App() {
   return (
