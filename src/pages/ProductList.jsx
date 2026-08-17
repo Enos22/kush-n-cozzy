@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { getProducts } from '../api/products';
+import { getProducts } from '../../public/products';
 import ProductCard from './ProductCard';
 
 export default function ProductList() {

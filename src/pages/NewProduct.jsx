@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createProduct, deleteProduct, getProducts } from '../api/products';
+import { createProduct, deleteProduct, getProducts } from '../../public/products';
 
 function NewProduct() {
     const [products, setProducts] = useState([]);
