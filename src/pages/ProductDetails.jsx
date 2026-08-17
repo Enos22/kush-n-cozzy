@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../CartContext';
-import { getProducts } from "../products";
+import { getProducts, getProduct } from "../products";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -13,7 +13,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         setLoading(true);
-        getProducts(id)
+        getProduct(id)
             .then((data) => {
                 setProduct(data);
                 setQuantity(1);
