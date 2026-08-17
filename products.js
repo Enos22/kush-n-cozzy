@@ -1,20 +1,4 @@
-
-function resolveApiUrl() {
-    if (typeof window !== 'undefined') {
-        try {
-            const params = new URLSearchParams(window.location.search);
-            const apiParam = params.get('api');
-            if (apiParam) return apiParam.replace(/\/$/, '');
-        } catch (e) {
-            // ignore
-        }
-        if (window.__API_URL__) return String(window.__API_URL__).replace(/\/$/, '');
-        if (window.location && window.location.hostname === 'localhost') return 'http://localhost:4000';
-    }
-    return import.meta.env.VITE_API_URL || '';
-}
-
-const API_URL = resolveApiUrl();
+const API_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '')
 
 async function request(path, options = {}) {
     // If no API_URL (production static site), read from local db.json
@@ -66,10 +50,10 @@ export function getProduct(id) {
     return request(`/products/${id}`)
 }
 
-export function createProduct(beer) {
+export function createProduct(product) {
     return request('/products', {
         method: 'POST',
-        body: JSON.stringify(beer),
+        body: JSON.stringify(product),
     })
 }
 
