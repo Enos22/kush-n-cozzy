@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
 
-// Point this at your json-server instance, e.g. "http://localhost:3001/orders"
-const ORDERS_ENDPOINT = "http://localhost:3001/orders";
+// Use VITE_API_URL when provided, otherwise default to local json-server on port 4000
+const ORDERS_ENDPOINT = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/orders`
+  : "http://localhost:4000/orders";
 
 function Checkout() {
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -18,6 +20,7 @@ function Checkout() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -28,6 +31,7 @@ function Checkout() {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
+    setSuccessMessage("");
 
     const order = {
       customer: form,
@@ -46,8 +50,11 @@ function Checkout() {
 
       if (!res.ok) throw new Error("Failed to place order");
 
+      setSuccessMessage("Order placed successfully! Redirecting to confirmation...");
       clearCart();
-      navigate("/order-confirmation");
+      setTimeout(() => {
+        navigate("/order-confirmation");
+      }, 1000);
     } catch (err) {
       setError("Something went wrong placing your order. Please try again.");
     } finally {
@@ -91,6 +98,7 @@ function Checkout() {
             name="fullName"
             value={form.fullName}
             onChange={handleChange}
+            placeholder="Enter your full name"
             required
           />
         </label>
@@ -102,6 +110,7 @@ function Checkout() {
             name="email"
             value={form.email}
             onChange={handleChange}
+            placeholder="you@example.com"
             required
           />
         </label>
@@ -113,6 +122,7 @@ function Checkout() {
             name="phone"
             value={form.phone}
             onChange={handleChange}
+            placeholder="0712 345 678"
             required
           />
         </label>
@@ -123,6 +133,7 @@ function Checkout() {
             name="address"
             value={form.address}
             onChange={handleChange}
+            placeholder="Enter your delivery address"
             required
           />
         </label>
@@ -141,6 +152,11 @@ function Checkout() {
         </label>
 
         {error && <p className="checkout-error">{error}</p>}
+        {successMessage && (
+          <p style={{ color: "green", fontWeight: 700, marginTop: 12 }}>
+            {successMessage}
+          </p>
+        )}
 
         <button type="submit" className="btn btn-checkout" disabled={submitting}>
           {submitting ? "Placing Order..." : "Place Order"}

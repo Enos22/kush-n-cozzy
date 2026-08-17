@@ -1,88 +1,105 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { createProduct, deleteProduct, getProducts } from '../api/products';
 
 function NewProduct() {
-  const [products, setProducts] = useState([]);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+    const [products, setProducts] = useState([]);
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('electronics');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
 
-  useEffect(() => {
-    fetch("http://localhost:3001/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Failed to fetch products:", err));
-  }, []);
+    useEffect(() => {
+        getProducts()
+            .then((data) => setProducts(data))
+            .catch((err) => console.error('Failed to fetch products:', err));
+    }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newProduct = { name, price: Number(price), description, image };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    fetch("http://localhost:3001/products", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newProduct),
-    })
-      .then((res) => res.json())
-      .then((savedProduct) => {
-        setProducts([...products, savedProduct]);
-        setName("");
-        setPrice("");
-        setDescription("");
-        setImage("");
-      })
-      .catch((err) => console.error("Failed to add product:", err));
-  };
+        const newProduct = {
+            name,
+            category,
+            price: Number(price),
+            description,
+            image,
+        };
 
-  const handleDelete = (id) => {
-    fetch(`http://localhost:3001/products/${id}`, { method: "DELETE" })
-      .then(() => setProducts(products.filter((product) => product.id !== id)))
-      .catch((err) => console.error("Failed to delete product:", err));
-  };
+        try {
+            const savedProduct = await createProduct(newProduct);
+            setProducts((current) => [...current, savedProduct]);
+            setName('');
+            setCategory('electronics');
+            setPrice('');
+            setDescription('');
+            setImage('');
+        } catch (err) {
+            console.error('Failed to add product:', err);
+        }
+    };
 
-  return (
-    <div className="new-product-container">
-      <h1 className="brand-mark" style={{ fontSize: "1.6rem" }}>
-        Add a New <span>Product</span>
-      </h1>
-      <p className="brand-subtitle">admin · inventory desk</p>
+    const handleDelete = async (id) => {
+        try {
+            await deleteProduct(id);
+            setProducts((current) => current.filter((product) => product.id !== id));
+        } catch (err) {
+            console.error('Failed to delete product:', err);
+        }
+    };
 
-      <div className="tag-card tilt">
-        <form onSubmit={handleSubmit}>
-          <label>Product Name</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+    return (
+        <div className="new-product-container">
+            <h1 className="brand-mark" style={{ fontSize: '1.6rem' }}>
+                Add a New <span>Product</span>
+            </h1>
+            <p className="brand-subtitle">admin · inventory desk</p>
 
-          <label>Price (KES)</label>
-          <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+            <div className="tag-card tilt">
+                <form onSubmit={handleSubmit}>
+                    <label>Product Name</label>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
 
-          <label>Description</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
+                    <label>Category</label>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="beauty products">Beauty Products</option>
+                        <option value="gift products">Gift Products</option>
+                        <option value="furniture">Furniture</option>
+                    </select>
 
-          <label>Image URL</label>
-          <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+                    <label>Price (KES)</label>
+                    <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
 
-          <button type="submit">Add Product</button>
-        </form>
-      </div>
+                    <label>Description</label>
+                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
 
-      <h3 style={{ marginTop: 40 }}>Current Products</h3>
-      <ul className="product-list">
-        {products.map((product) => (
-          <li key={product.id} className="product-item">
-            <img src={product.image} alt={product.name} />
-            <div>
-              <strong>{product.name}</strong>
-              <p>{product.description}</p>
-              <span className="price-tag">KES {product.price}</span>
+                    <label>Image URL</label>
+                    <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+
+                    <button type="submit">Add Product</button>
+                </form>
             </div>
-            <button className="delete-btn" onClick={() => handleDelete(product.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+
+            <h3 style={{ marginTop: 40 }}>Current Products</h3>
+            <ul className="product-list">
+                {products.map((product) => (
+                    <li key={product.id} className="product-item">
+                        <img src={product.image} alt={product.name} />
+                        <div>
+                            <strong>{product.name}</strong>
+                            <p>{product.description}</p>
+                            <span className="price-tag">KES {product.price}</span>
+                        </div>
+                        <button className="delete-btn" onClick={() => handleDelete(product.id)}>
+                            Delete
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default NewProduct;

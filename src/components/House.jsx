@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useCart } from "../CartContext";
 
 const navLinkStyle = ({ isActive }) => ({
   padding: "8px 4px",
@@ -27,6 +28,7 @@ const sidebarLinkStyle = ({ isActive }) => ({
 });
 
 export default function House() {
+  const { totalItems } = useCart();
   return (
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -79,6 +81,9 @@ export default function House() {
             <NavLink to="/contact" style={navLinkStyle}>
               Contact
             </NavLink>
+            <NavLink to="/cart" style={navLinkStyle}>
+              Cart ({totalItems})
+            </NavLink>
             <NavLink to="/login" style={navLinkStyle}>
               Login
             </NavLink>
@@ -97,14 +102,14 @@ export default function House() {
         }}>
         <aside style={{ width: 220, flexShrink: 0 }}>
           <nav style={{ display: "flex", flexDirection: "column" }}>
-            <NavLink to="/products" style={sidebarLinkStyle}>
-              Products
-            </NavLink>
             <NavLink to="/add-product" style={sidebarLinkStyle}>
               Add Product
             </NavLink>
-            <NavLink to="/orders" style={sidebarLinkStyle}>
-              Orders
+            <NavLink to="/cart" style={sidebarLinkStyle}>
+              Cart
+            </NavLink>
+            <NavLink to="/checkout" style={sidebarLinkStyle}>
+              Checkout
             </NavLink>
           </nav>
         </aside>
