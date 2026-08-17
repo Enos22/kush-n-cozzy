@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
-const STORAGE_KEY = "kushncozzy_cart";
+const STORAGE_KEY = "kush-n-cozzy_cart";
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState(() => {
@@ -25,7 +25,7 @@ export function CartProvider({ children }) {
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
-            : item
+            : item,
         );
       }
       return [...prev, { ...product, quantity }];
@@ -40,8 +40,8 @@ export function CartProvider({ children }) {
     if (quantity < 1) return;
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
+        item.id === productId ? { ...item, quantity } : item,
+      ),
     );
   }
 
@@ -52,7 +52,7 @@ export function CartProvider({ children }) {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
@@ -65,8 +65,7 @@ export function CartProvider({ children }) {
         clearCart,
         totalItems,
         totalPrice,
-      }}
-    >
+      }}>
       {children}
     </CartContext.Provider>
   );
